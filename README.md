@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # invoice
 
 ## Project setup
@@ -27,3 +28,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# invoice
+>>>>>>> e5de728179b44d57be59d0f008eded29193068a4
