@@ -1,6 +1,7 @@
 <template>
     <el-row :gutter="20">
       <el-col :span="10">
+          <h2>Invoice Form</h2>
           <el-form ref="form" :model="form" label-width="120px">
             <el-form-item label="Activity time">
                 <el-date-picker type="date" placeholder="Pick a date" v-model="form.date" style="width: 100%;"></el-date-picker>
@@ -8,22 +9,17 @@
             <el-form-item
                 label="amount"
                 prop="amount"
-                :rules="[
-                { type: 'number', message: 'amount must be a number'}
-                ]"
             >
-                <el-input type="text" v-model.number="form.amount" autocomplete="off"></el-input>
+                <el-input type="number" v-model.number="form.amount" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button v-if="editMode === false" type="primary" @click="onSubmit">Create</el-button>
-                <el-button v-if="editMode === true" type="primary" @click="onSave">Save</el-button>
-                <el-button @click="getAggregate">Get Aggregate</el-button>
-                <!-- <el-button>Cancel</el-button> -->
+                <el-button v-if="editMode === false" type="primary" @click="onSubmit" size="small">Create</el-button>
+                <el-button v-if="editMode === true" type="primary" @click="onSave" size="small">Save</el-button>
+                <el-button @click="getAggregate" type="success" size="small">Get Aggregate</el-button>
             </el-form-item>
             </el-form>
       </el-col>
-      <el-col :span="2"></el-col>
-      <el-col :span="12">
+      <el-col :span="12" :offset="1">
         <h2>Invoices</h2>
         <el-table
         ref="filterTable"
@@ -45,11 +41,11 @@
             <template slot-scope="scope">
                 <el-button
                 size="mini"
-                @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
+                @click="handleEdit(scope.$index, scope.row)" icon="el-icon-edit" circle></el-button>
                 <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+                @click="handleDelete(scope.$index, scope.row)" icon="el-icon-delete" circle></el-button>
             </template>
             </el-table-column>
         </el-table>
@@ -106,7 +102,7 @@ export default {
           this.form.date = row.date
           this.tempIndex = index
       },
-      handleDelete (index, row) {
+      handleDelete (index) {
           this.tableData.splice(index, 1)
       },
       filterHandler (value, row, column) {
