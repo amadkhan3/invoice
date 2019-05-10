@@ -23,7 +23,7 @@
         <h2>Invoices</h2>
         <el-table
         ref="filterTable"
-        :data="tableData"
+        :data="tableData.filter(data => !search || data.date.includes(search))"
         style="width: 100%">
             <el-table-column
                 prop="date"
@@ -36,8 +36,22 @@
                 label="Amount"
                 >
             </el-table-column>
+            <!-- <el-table-column
+            align="right">
+            <template slot="header" slot-scope="scope">
+                <el-input
+                v-model="search"
+                size="mini"
+                placeholder="Type to search"/>
+            </template> -->
             <el-table-column
-            label="Operations">
+            align="right">
+            <template slot="header" slot-scope="scope">
+                <el-input
+                v-model="search"
+                size="mini"
+                placeholder="Type to search"/>
+            </template>
             <template slot-scope="scope">
                 <el-button
                 size="mini"
@@ -79,6 +93,7 @@ export default {
   },
   data() {
       return {
+        search: '',
         editMode: false,
         tempIndex: '',
         tableData: [],
