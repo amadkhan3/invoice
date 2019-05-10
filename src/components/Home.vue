@@ -36,14 +36,6 @@
                 label="Amount"
                 >
             </el-table-column>
-            <!-- <el-table-column
-            align="right">
-            <template slot="header" slot-scope="scope">
-                <el-input
-                v-model="search"
-                size="mini"
-                placeholder="Type to search"/>
-            </template> -->
             <el-table-column
             align="right">
             <template slot="header" slot-scope="scope">
